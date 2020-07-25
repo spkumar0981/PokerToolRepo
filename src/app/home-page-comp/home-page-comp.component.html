@@ -35,7 +35,7 @@
         <input type="text" class="form-control mb-2 mr-sm-2" id="username" placeholder="Username" [(ngModel)]="username">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" [routerLink]="['/createStory',username]" data-dismiss="modal">Submit</button>
+         <button type="button" class="btn btn-primary" [routerLink]="['/createStory']"  [queryParams]="{ userName: username }" data-dismiss="modal">Submit</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
       </div>
     </div>

@@ -8,8 +8,8 @@ import { EstimateStoryComponent } from './estimate-story/estimate-story.componen
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomePageCompComponent },
-  { path: 'createStory/:username', component: CreateStoryComponent },
-  { path: 'estimateStory/:username', component: EstimateStoryComponent },
+  { path: 'createStory', component: CreateStoryComponent },
+  { path: 'estimateStory', component: EstimateStoryComponent },
 ];
 
 @NgModule({

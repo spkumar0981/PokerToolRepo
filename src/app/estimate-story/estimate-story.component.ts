@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { flatMap } from "rxjs/operators";
+import { CreatestoryjsService } from '../create-story/createstoryjs.service';
 
 @Component({
   selector: 'app-estimate-story',
@@ -8,15 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EstimateStoryComponent implements OnInit {
   // tslint:disable-next-line: ban-types
-  username: String;
+  username: string;
+  storyName: string;
   private sub: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,private createService:CreatestoryjsService) { }
 
   ngOnInit(): void {
-     this.sub = this.route.params.subscribe(params => {
-       this.username = params.username; // (+) converts string 'id' to a number --> +params['username'];
-       // In a real app: dispatch action to load the details here.
+    this.sub = this.route.queryParamMap.pipe(
+      flatMap((params) => this.createService.createStory(params.get('username')||"",params.get('storyname')||""))
+    ).subscribe((data) => {
+     
     });
   }
 
